@@ -1,6 +1,4 @@
 <script>
-import Hello from './components/Hello.vue';
-
 export default {
   data() {
     return {
@@ -8,7 +6,7 @@ export default {
     }
   },
   components: {
-    Hello,
+    
   },
   props:{
 
@@ -20,13 +18,10 @@ export default {
 
   }
 }
-
 </script>
 
-<template>  
-
-  <Hello />
-
+<template>
+  <h1>{{ msg }}</h1>
 </template>
 
 <style scoped>
