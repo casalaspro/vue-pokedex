@@ -1,5 +1,5 @@
 <script>
-import Hello from './components/Hello.vue';
+import AppSearchBar from './components/AppSearchBar.vue';
 
 export default {
   data() {
@@ -8,7 +8,7 @@ export default {
     }
   },
   components: {
-    Hello,
+    AppSearchBar,
   },
   props:{
 
@@ -25,7 +25,7 @@ export default {
 
 <template>  
 
-  <Hello />
+  <AppSearchBar />
 
 </template>
 
