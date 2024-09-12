@@ -6,7 +6,7 @@ export default {
     return {
       msg: 'Hello!',
       searchbar: '',
-      pokemon: [],
+      fetch: [],
     }
   },
   emits:['data-to-parent'],
@@ -23,8 +23,8 @@ export default {
         url: 'https://pokeapi.co/api/v2/pokemon/' + this.searchbar,
       })
       .then((response)=>{
-        this.pokemon = response.data;
-        console.log(this.pokemon);
+        this.fetch = response.data;
+        console.log(this.fetch);
         this.dataToParent();
       })
       .catch((error)=>{
@@ -32,7 +32,7 @@ export default {
       });
     },
     dataToParent(){
-      this.$emit('data-to-parent', this.pokemon);
+      this.$emit('data-to-parent', this.fetch);
       console.log('vada data');
     }
   },

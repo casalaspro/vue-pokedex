@@ -5,7 +5,10 @@ import AppShowData from './components/AppShowData.vue';
 export default {
   data() {
     return {
-      data: [],
+      pokemon: undefined,
+      test: {
+        pino: 'landi'
+      }
     }
   },
   components: {
@@ -16,9 +19,9 @@ export default {
 
   },
   methods: {
-    dataFromChild(pokemon){
-      this.data = pokemon;
-      console.log(this.data);
+    dataFromChild(fetch){
+      this.pokemon = fetch;
+      console.log(this.pokemon);
     }
   },
   mounted(){
@@ -33,7 +36,8 @@ export default {
   <div class="app-wrap d-flex justify-content-center align-items-center">
     <div class="components">
       <AppSearchBar @data-to-parent="dataFromChild"/>
-      <AppShowData />
+      <AppShowData v-bind:data="pokemon"/>
+    <!-- <h1>Prova: {{ test.pino }}</h1> -->
     </div>
   </div>
 
