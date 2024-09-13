@@ -9,7 +9,9 @@ export default {
       fetch: [],
     }
   },
-  emits:['data-to-parent'],
+  emits:[
+    'data-to-parent'
+  ],
   components: {
     
   },
