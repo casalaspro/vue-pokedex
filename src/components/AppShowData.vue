@@ -21,15 +21,17 @@ export default {
 <template>
   <div class="card-wrap mt-3">
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> Name: {{data.name}}</h5>
-        <h5 class="card-title"> Type:</h5>
-        <span v-for="type in data.types">{{ type.type.name }}</span>
+      <div class="info_wrap">
+        <div class="card-body">
+        <h5 class="card-title"> Name: <span v-if="data">{{data.name}}</span></h5>
+        <h5 class="card-title"> Type:
+          <span v-if="data" v-for="type in data.types"> <span v-if="data">{{ type.type.name }}</span></span>
+        </h5>
         
-        <h5 class="card-title"> Weight: {{data.weight}} lb</h5>
-        <h5 class="card-title"> Height: {{data.height}} "</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        
+        <h5 class="card-title"> Weight: <span v-if="data">{{data.weight}}</span> lb</h5>
+        <h5 class="card-title"> Height: <span v-if="data">{{data.height}}</span>"</h5>
+      </div>
       </div>
     </div>
   </div>

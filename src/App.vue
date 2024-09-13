@@ -44,7 +44,5 @@ export default {
 </template>
 
 <style scoped>
-.app-wrap{
-  height: 100%;
-}
+
 </style>
