@@ -12,6 +12,9 @@ export default {
 
   },
   methods: {
+    selectPokemon(pokemon){
+      console.log('You selected: ', pokemon);
+    },
     checkPokemons(){
       if(localStorage.getItem('myPokemons') !== null){
         let updatedListString = localStorage.getItem('myPokemons');
@@ -32,22 +35,28 @@ export default {
 </script>
 
 <template>
-  <h1>My Pokemons</h1>
-
-  <div class="card">
-    <div class="card-body">
-      <table class="table table-striped">
-        <tr v-for="pokemon in myList">
-          <td>{{ pokemon.name }}</td>
-        </tr>
-      </table>
-      <!-- <div class="my-list">
-        <h1 v-for="pokemon in myList" >{{ pokemon.name }}</h1>
-      </div> -->
+  <div class="my-pokemon-wrap mb-3">
+    <h1 class="mb-3">My Pokemons</h1>
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-striped">
+          <tr v-for="pokemon in myList">
+            <td @click="selectPokemon(pokemon.name)" class="px-2">{{ pokemon.name }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+td{
+  text-transform: capitalize;
+}
 
+td:hover{
+    background-color: #DC3546;
+    color: white;
+    border-radius: 4px;
+  }
 </style>

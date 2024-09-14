@@ -27,6 +27,16 @@ export default {
 
   },
   methods: {
+    copySavedPokemons(){
+      if(localStorage.getItem('myPokemons') !== null){
+        let lastPokeListString = localStorage.getItem('myPokemons');
+        let lastPokeListObject = JSON.parse(lastPokeListString);
+        this.myPokemons = lastPokeListString;
+        console.log("Pokedex starting pokemons: ", this.myPokemons);
+      }else{
+        console.log('No pokemon starting Pokedex.')
+      }
+    },
     dataFromChild(fetch){
       this.pokemon = fetch;
       this.isPokemonWild = true;
@@ -54,7 +64,7 @@ export default {
     }
   },
   mounted(){
-
+    this.copySavedPokemons();
   }
 }
 
@@ -64,9 +74,9 @@ export default {
 
   <div class="app-wrap d-flex justify-content-center align-items-center">
     <div class="components">
-      <AppSearchBar @data-to-parent="dataFromChild"/>
-      <AppShowData v-bind:data="pokemon"/>
-      <AppButtonAddRemove v-bind:isWild="isPokemonWild" @catch-or-free="ketchumAction" />
+      <AppSearchBar class="mb-3" @data-to-parent="dataFromChild"/>
+      <AppShowData class="mb-3" v-bind:data="pokemon"/>
+      <AppButtonAddRemove class="mb-3" v-bind:isWild="isPokemonWild" @catch-or-free="ketchumAction" />
       <!-- i sat the key because i reload the component each time i make +1 -->
        <!-- each time the component is reload it will update te files from localStorage -->
       <AppLocalList :key="howManyReload" />
