@@ -11,9 +11,13 @@ export default {
   props:{
 
   },
+  emits:[
+    'select-pokemon'
+  ],
   methods: {
-    selectPokemon(pokemon){
-      console.log('You selected: ', pokemon);
+    selectPokemon(pokemonName, key){
+      console.log('You selected: ' + pokemonName + ', with key: ' + key);
+      this.$emit('select-pokemon', pokemonName, key);
     },
     checkPokemons(){
       if(localStorage.getItem('myPokemons') !== null){
@@ -40,8 +44,8 @@ export default {
     <div class="card">
       <div class="card-body">
         <table class="table table-striped">
-          <tr v-for="pokemon in myList">
-            <td @click="selectPokemon(pokemon.name)" class="px-2">{{ pokemon.name }}</td>
+          <tr v-for="(pokemon, key) in myList">
+            <td @click="selectPokemon(pokemon.name, key)" class="px-2">{{ pokemon.name }}</td>
           </tr>
         </table>
       </div>

@@ -38,5 +38,7 @@ export default {
 </template>
 
 <style scoped>
-
+span{
+  text-transform: capitalize;
+}
 </style>

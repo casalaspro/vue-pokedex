@@ -29,7 +29,7 @@ export default {
 </script>
 
 <template>
-  <button @click="catchOrFree(isWild)" class="btn btn-danger" type="submit"><span v-if="wild === true || wild === null">Catch It!</span ><span v-else>Set It free!</span></button>
+  <button @click="catchOrFree(isWild)" class="btn btn-danger" type="submit"><span v-if="isWild === true || isWild === null">Catch It!</span ><span v-else-if="isWild === false">Set It free!</span></button>
 </template>
 
 <style scoped>

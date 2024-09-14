@@ -31,11 +31,17 @@ export default {
       if(localStorage.getItem('myPokemons') !== null){
         let lastPokeListString = localStorage.getItem('myPokemons');
         let lastPokeListObject = JSON.parse(lastPokeListString);
-        this.myPokemons = lastPokeListString;
+        this.myPokemons = lastPokeListObject;
         console.log("Pokedex starting pokemons: ", this.myPokemons);
       }else{
         console.log('No pokemon starting Pokedex.')
       }
+    },
+    changePokemon(pokemonName, key){
+      console.log('Hai selezionato in App: ' + pokemonName + ', con chiave: ' + key);
+      this.pokemon = this.myPokemons[key];
+      this.isPokemonWild = false;
+      console.log('Il tuo pokemon è selvaggio? ', this.isPokemonWild);
     },
     dataFromChild(fetch){
       this.pokemon = fetch;
@@ -79,7 +85,7 @@ export default {
       <AppButtonAddRemove class="mb-3" v-bind:isWild="isPokemonWild" @catch-or-free="ketchumAction" />
       <!-- i sat the key because i reload the component each time i make +1 -->
        <!-- each time the component is reload it will update te files from localStorage -->
-      <AppLocalList :key="howManyReload" />
+      <AppLocalList :key="howManyReload" @select-pokemon="changePokemon"/>
     </div>
   </div>
 
