@@ -40,10 +40,11 @@ export default {
 
 <template>
   <div class="my-pokemon-wrap mb-3">
-    <h1 class="mb-3">My Pokemons</h1>
     <div class="card">
       <div class="card-body">
-        <table class="table table-striped">
+        <h3 class="">My Pokemons</h3>
+        <div class="line"></div>
+        <table class="table mt-1 table-striped">
           <tr v-for="(pokemon, key) in myList">
             <td @click="selectPokemon(pokemon.name, key)" class="px-2">{{ pokemon.name }}</td>
           </tr>
@@ -56,11 +57,41 @@ export default {
 <style scoped>
 td{
   text-transform: capitalize;
+  color: greenyellow;
+}
+
+.line{
+  color: greenyellow;
+  border: 1px solid greenyellow;
+}
+
+.my-pokemon-wrap{
+    margin-top: 30px;
+    margin-left: 2px;
+    width: 222px;
+    height: 155px;
+    overflow-y: scroll;
+    border-radius: 12px;
+    border: solid black 2px;
+    color: greenyellow !important;
+    background-color: #2F2F2F;
 }
 
 td:hover{
-    background-color: #DC3546;
-    color: white;
+    background-color: greenyellow;
+    color: #2F2F2F;
+    /* color: white; */
     border-radius: 4px;
   }
+.card-body{
+  background-color: #2F2F2F
+}
+
+.card{
+  background-color: #2F2F2F
+}
+h3{
+  color: greenyellow;
+  text-transform: uppercase;
+}
 </style>

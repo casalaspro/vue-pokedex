@@ -33,5 +33,13 @@ export default {
 </template>
 
 <style scoped>
+  button{
+    border: 2px solid black;
+    margin-top: 31px;
+    margin-left: 74px;
+  }
 
+  button:hover{
+    border: 2px solid black;
+  }
 </style>

@@ -1,6 +1,11 @@
+// I import fonts
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(47, 47, 47);
   height: 100vh;
+  font-family: "VT323", monospace;
+  color: greenyellow;
 
   #app{
     height: 100%;
@@ -11,5 +16,8 @@ body {
     
   }
   
+  h1{
+    text-transform: uppercase;
+  }
 }
 
