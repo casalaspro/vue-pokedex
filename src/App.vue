@@ -9,10 +9,8 @@ export default {
   data() {
     return {
       pokemon: undefined,
+      pokemonKey: null,
       isPokemonWild: null,
-      test: {
-        pino: 'landi'
-      },
       myPokemons: [],
       howManyReload: 1,
     }
@@ -39,7 +37,11 @@ export default {
     },
     changePokemon(pokemonName, key){
       console.log('Hai selezionato in App: ' + pokemonName + ', con chiave: ' + key);
+      // i set the selected pokemon to be shown
       this.pokemon = this.myPokemons[key];
+      // i set the pokemon key / it will be useful if we will want to delete it from the list
+      this.pokemonKey = key;
+      // i set if it is wild or not / it will change the button behaviour
       this.isPokemonWild = false;
       console.log('Il tuo pokemon è selvaggio? ', this.isPokemonWild);
     },
@@ -49,21 +51,29 @@ export default {
       console.log(this.pokemon);
     },
     ketchumAction(signal){
-      if(this.isPokemonWild ==! null){
+      if(this.isPokemonWild !== null){
         if(this.isPokemonWild){
           // i add a pokemon to the pokemon list
           this.myPokemons.push(this.pokemon);
-          // i set differently the cpokemon condition
+          // i set differently the pokemon condition
           this.isPokemonWild = signal;
-          // myPokemons works
-          // console.log(this.myPokemons);
           // i convert json in string
           const myString = JSON.stringify(this.myPokemons);
           // i save the string inside localStorage
           localStorage.setItem('myPokemons', myString);
           console.log('La stringa salavata: ', localStorage.getItem('myPokemons'));
+          // i update AppLocalList
           this.howManyReload ++;
           // console.log('La mia stringa ',myString);
+        }else{
+          // i change the pokemon list inside the app
+          this.myPokemons.splice(this.pokemonKey, 1);
+          // i transform the object array in string
+          const myPokemonsArrayString = JSON.stringify(this.myPokemons);
+          // i update the data inside the localSTORAGE replacing them
+          localStorage.setItem('myPokemons', myPokemonsArrayString);
+          // i update AppLocalList
+          this.howManyReload ++;
         }
       }
       console.log('hai cliccato da add-remove!', signal);
